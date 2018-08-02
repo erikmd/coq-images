@@ -38,7 +38,7 @@ ENV COMPILER="4.02.3"
 RUN ["/bin/bash", "--login", "-c", "set -x \
   && opam init --auto-setup --yes --jobs=${NJOBS} --compiler=${COMPILER} \
   && eval $(opam config env) \
-  && opam update \
+  && opam update -y \
   && opam config list && opam list"]
 
 ENV COQ_VERSION="8.8.1"
@@ -46,7 +46,7 @@ ENV COQ_VERSION="8.8.1"
 # Install Coq
 RUN ["/bin/bash", "--login", "-x", "-c", \
   "opam pin add -n -k version coq ${COQ_VERSION} \
-  && opam install -j ${NJOBS} coq \
+  && opam install -y -j ${NJOBS} coq \
   && opam list"]
 
 # opam config exec -- make
