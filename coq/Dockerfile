@@ -4,15 +4,21 @@ LABEL maintainer="erik@martin-dorel.org"
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     aspcud \
+    autoconf \
+    automake \
     build-essential \
     ca-certificates \
     curl \
+    emacs25-nox \
     git \
+    gosu \
+    less \
     m4 \
     ocaml-best-compilers \
     ocaml-core \
     opam \
     pkg-config \
+    rlwrap \
     rsync \
     time \
   && echo "ocamlc -version => $(ocamlc -version)" \
