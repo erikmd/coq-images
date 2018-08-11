@@ -2,7 +2,7 @@ FROM debian:9
 LABEL maintainer="erik@martin-dorel.org"
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     aspcud \
     autoconf \
     automake \
