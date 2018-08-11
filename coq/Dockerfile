@@ -35,12 +35,18 @@ ARG guest_gid=${guest_uid}
 RUN groupadd -g ${guest_gid} coq \
   && useradd --no-log-init -m -s /bin/bash -g coq -G sudo -p '' -u ${guest_uid} coq
 
-USER coq
 WORKDIR /home/coq
 
+COPY travis.bash /usr/local/bin/
+
 # Create dirs for user scripts
-RUN mkdir -p -v bin .local/bin
-# no need for "chown -v coq:coq bin .local/bin"
+RUN mkdir -p -v bin .local/bin \
+  && chown -v coq:coq bin .local .local/bin \
+  # Load travis.bash at login
+  && { echo; \
+  echo '[ -f /usr/local/bin/travis.bash ] && . /usr/local/bin/travis.bash'; } >> /etc/bash.bashrc
+
+USER coq
 
 ENV NJOBS="2"
 ENV COMPILER="4.02.3"
