@@ -20,15 +20,20 @@ RUN apt-get update \
     pkg-config \
     rlwrap \
     rsync \
+    sudo \
     time \
   && echo "ocamlc -version => $(ocamlc -version)" \
   && echo "opam --version => $(opam --version)" \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# Add system group and user
-RUN groupadd -r coq \
-  && useradd --no-log-init -r -m -s /bin/bash -g coq coq
+# Use Docker build args to set the UID/GID
+ARG guest_uid=1000
+ARG guest_gid=${guest_uid}
+
+# Add Coq group and user with sudo perms
+RUN groupadd -g ${guest_gid} coq \
+  && useradd --no-log-init -m -s /bin/bash -g coq -G sudo -p '' -u ${guest_uid} coq
 
 USER coq
 WORKDIR /home/coq
