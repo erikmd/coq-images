@@ -1,4 +1,5 @@
 #!/bin/bash
+# This bash file is to be sourced at login and must have .sh extension
 
 # Excerpt from:
 # https://github.com/travis-ci/travis-build/blob/master/lib/travis/build/templates/header.sh
