@@ -57,7 +57,7 @@ RUN ["/bin/bash", "--login", "-c", "set -x \
   && opam repository add coq-released https://coq.inria.fr/opam/released \
   && opam update -y \
   && opam pin add -n -k version coq ${COQ_VERSION} \
-  && opam install -y -j ${NJOBS} coq \
+  && opam install -y -j ${NJOBS} depext coq \
   && opam config list && opam list"]
 
 # opam config exec -- make
