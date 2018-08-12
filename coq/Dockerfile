@@ -1,8 +1,8 @@
 FROM debian:9
 LABEL maintainer="erik@martin-dorel.org"
 
-RUN apt-get update \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update -y -q \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
     aspcud \
     autoconf \
     automake \
