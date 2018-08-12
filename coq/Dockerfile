@@ -59,5 +59,3 @@ RUN ["/bin/bash", "--login", "-c", "set -x \
   && opam pin add -n -k version coq ${COQ_VERSION} \
   && opam install -y -j ${NJOBS} depext coq \
   && opam config list && opam list"]
-
-# opam config exec -- make

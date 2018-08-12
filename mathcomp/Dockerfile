@@ -14,5 +14,3 @@ RUN ["/bin/bash", "--login", "-c", "set -x \
   && opam pin add -n -k version coq-mathcomp-character ${MATHCOMP_VERSION} \
   && opam install -y -j ${NJOBS} coq-mathcomp-character \
   && opam config list && opam list"]
-
-# opam config exec -- make
