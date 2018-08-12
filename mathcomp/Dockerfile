@@ -1,4 +1,4 @@
-FROM erikmd/coq:8.8.1
+FROM erikmd/coq:8.7.2
 LABEL maintainer="erik@martin-dorel.org"
 
 ENV MATHCOMP_VERSION="1.7.0"
