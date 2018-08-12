@@ -48,7 +48,7 @@ USER coq
 
 ENV NJOBS="2"
 ENV COMPILER="4.02.3"
-ENV COQ_VERSION="8.8.1"
+ENV COQ_VERSION="8.7.1+2"
 
 # Setup OPAM and Coq
 RUN ["/bin/bash", "--login", "-c", "set -x \
