@@ -40,11 +40,11 @@ COPY travis.sh /etc/profile.d/
 
 WORKDIR /home/coq
 
-# Create dirs for user scripts
-RUN mkdir -p -v bin .local/bin \
-  && chown -v coq:coq bin .local .local/bin
-
 USER coq
+
+# Create dirs for user scripts
+# => one need not run "chown coq:coq bin .local .local/bin" afterwards
+RUN mkdir -p -v bin .local/bin
 
 ENV NJOBS="2"
 ENV COMPILER="4.02.3"
